@@ -1,0 +1,20 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/Staff227/React.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Staff227/React/issues"
+  },
+  "homepage": "https://github.com/Staff227/React#readme"
+}
