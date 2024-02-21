@@ -1,14 +1,26 @@
-import { useState } from 'react'
-import Navbar from './Navbar.jsx'
+import react,{ useState } from 'react'
+import Navbar from './components/Navbar'
+import Sidebar from './components/Sidebar'
+import Body from './components/Body'
 import './App.css'
 
+
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
-    <>
+    <div className='App_container'>
       <Navbar />
-    </>
+      
+        
+          <Sidebar />
+        
+        
+          <Body />
+        
+      
+    </div>
+    
   )
 }
 

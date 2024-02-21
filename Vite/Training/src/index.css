@@ -1,0 +1,49 @@
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0%;
+}
+.App_container div{
+    
+}
+/* Navbar */
+.navContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(19, 18, 18);
+    color: aliceblue;
+}
+.logo{
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-family: "jacquarda-bastarda", sans-serif;
+}
+
+
+.navContainer ul{
+    display: flex;
+    gap: 10px;
+}
+
+.navContainer ul li{
+    list-style: none;
+    font-size: 1.2rem;
+}
+
+/* Navbar */
+
+/* Sidebar */
+.sidebarContainer{
+    background-color: rgb(14, 26, 255);
+}
+
+/* Sidebar */
+
+/* Body */
+.body{
+    background-color: rgb(4, 10, 119);
+}
+/* Body */
