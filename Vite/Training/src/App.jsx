@@ -1,7 +1,5 @@
 import react,{ useState } from 'react'
-import Navbar from './components/Navbar'
-import Sidebar from './components/Sidebar'
-import Body from './components/Body'
+import Counter from '../components/Counter'
 import './App.css'
 
 
@@ -9,16 +7,8 @@ function App() {
   
 
   return (
-    <div className='App_container'>
-      <Navbar />
-      
-        
-          <Sidebar />
-        
-        
-          <Body />
-        
-      
+    <div className="">
+      <Counter />
     </div>
     
   )

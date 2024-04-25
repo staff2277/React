@@ -1,4 +1,4 @@
-const data = [
+export default[
     { id: 1, imageUrl: "/images/img/image-1.png" },
     { id: 2, imageUrl: "/images/img/image-2.png" },
     { id: 3, imageUrl: "/images/img/image-3.png" },

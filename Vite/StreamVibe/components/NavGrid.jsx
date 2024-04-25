@@ -1,8 +1,9 @@
 import React from 'react'
 
-const NavGrid = () => {
+const NavGrid = (props) => {
+  console.log(props.imageUrl);
   return (
-    <div>NavGrid</div>
+    <img src={props.imageUrl} alt="img-grid" className='w-44' />
   )
 }
 

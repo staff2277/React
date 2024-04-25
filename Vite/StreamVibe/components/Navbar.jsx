@@ -2,8 +2,8 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <div className="bg-black py-5">
-      <nav className="bg-transparent flex justify-between items-center mx-28">
+    <div className="bg-transparent py-5 absolute w-full z-20">
+      <nav className="flex justify-between items-center mx-28">
         <div className="flex">
           <img src="/images/logo.svg" alt="logo" className="w-11" />
           <img src="/images/StreamVibe.svg" alt="logotext" className="w-24" />
