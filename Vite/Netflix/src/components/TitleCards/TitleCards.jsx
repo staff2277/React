@@ -4,7 +4,7 @@ import "./titleCards.css";
 
 const TitleCards = () => {
   return (
-    <div className="border-2 title-cards mt-[50px] mb-[30px]">
+/*     <div className="border-2 title-cards mt-[50px] mb-[30px]">
       <h2 className="mb-[8px]">Popular on Netflix</h2>
       <div className="card-list flex gap-[10px] border-2 overflow-x-scroll whitespace-nowrap">
         <div style={{ width: "100%" }} className="flex">
@@ -22,7 +22,8 @@ const TitleCards = () => {
           })}
         </div>
       </div>
-    </div>
+    </div> */
+    console.log('working')
   );
 };
 
