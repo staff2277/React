@@ -1,14 +1,13 @@
 import react,{ useState } from 'react'
-import Counter from '../components/Counter'
 import './App.css'
+import Home from "./Pages/Home.jsx/Home"
 
 
 function App() {
   
-
   return (
-    <div className="">
-      <Counter />
+    <div className="text-white">
+      <Home />
     </div>
     
   )
