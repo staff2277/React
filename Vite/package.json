@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Staff227/React/issues"
   },
-  "homepage": "https://github.com/Staff227/React#readme"
+  "homepage": "https://github.com/Staff227/React#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.14"
+  }
 }
