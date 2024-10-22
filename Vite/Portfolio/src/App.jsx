@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
+import Hero from '../components/Hero'
 
 const App = () => {
   return (
-    <>
-    <Navbar/>
-    </>
+    <div className='px-10 bg-[#e7dfc6] '>
+    <Hero/>
+    </div>
   )
 }
 
