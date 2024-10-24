@@ -8,12 +8,12 @@ const Hero = () => {
   return (
     <div className="h-screen">
       <Navbar />
-      <div className="flex justify-between  h-[90%]">
-        <div className="flex flex-col justify-between ">
+      <div className="flex justify-between h-[90%] mddd-only:flex-col">
+        <div className="flex flex-col justify-between seee-only:block">
           <HeroText />
           <HeroFooter />
         </div>
-        <div className=" flex justify-end items-end">
+        <div className="flex max-w-full justify-end items-end relative overflow-hidden object-contain">
           <HeroImg />
         </div>
       </div>
