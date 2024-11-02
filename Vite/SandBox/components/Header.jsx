@@ -1,10 +1,6 @@
-import React from 'react'
-
 const Header = () => {
   return (
-    <div>
-      <h1 className='text-[4rem] font-semibold'>TODOLIST</h1>
-    </div>
+    <h1 className='text-[2rem] font-bold'>Todo List App</h1>
   )
 }
 

@@ -1,64 +1,71 @@
-import { useState } from "react";
 import checked from "/checked.svg";
 import unchecked from "/unchecked.svg";
 import close from "/close.svg";
+import { useState } from "react";
 
 const Input = () => {
-  const [input, setInput] = useState("");
-  const [todos, setTodos] = useState([]);
-  const [checkStatus, setCheckStatus] = useState(true);
+  const [todo, setTodo] = useState("");
+  const [todoArray, setTodoArray] = useState([]);
+  const [checkedStatus, setCheckedStatus] = useState([]);
+  const [nextId, setNextId] = useState(1);
 
-  function addTodo() {
-    if (input) {
-      setTodos(() => [...todos, input]);
-      setInput("");
-    }
+  function trackChanges(event) {
+    setTodo(event);
   }
 
-  const [checkedStatusImg, setCheckedStatusImg] = useState(unchecked);
+  function addTodo(event) {
+    event.preventDefault(); // Prevent the form from submitting
 
-  
-  let todoArray = todos.map((todo, index) => {
-    function deleteTask(){
-      setTodos(todos.filter((_,i)=>i !== index))
-    }
+    if (todo.trim() === "") return; // Prevent adding empty items
 
-    function toggleCheckedStatus(){
-      setCheckStatus((prevstate)=> !prevstate)
-      if(checkStatus){
-        setCheckedStatusImg(() => checked)
-      }else{
-        setCheckedStatusImg(() => unchecked)
-      }
-    }
-    return(    
-    <div
-      key={index}
-      className="flex justify-between border-2 items-center py-3"
-    >
-      <img key={index} src={checkedStatusImg} alt="check" className="w-[50px]" onClick={toggleCheckedStatus}/>
-      <span>{todo}</span>
-      <img src={close} alt="close" className="w-[50px]" onClick={deleteTask}/>
-    </div>
-  )})
+    setTodoArray((prevState) => [...prevState, todo]);
+    setTodo("");
+
+    const newStatus = { id: nextId, img: unchecked };
+    setCheckedStatus((prevState) => [...prevState, newStatus]);
+
+    setNextId((prevState) => prevState + 1);
+  }
+
+  function toggleCheckedStatus(id) {
+    setCheckedStatus((prevStatus) =>
+      prevStatus.map((status) =>
+        status.id === id
+          ? { ...status, img: status.img === unchecked ? checked : unchecked }
+          : status
+      )
+    );
+  }
 
   return (
-    <div className="min-w-[70%]">
-      <div className="flex justify-center border-2">
+    <div className="flex justify-center flex-col max-md:w-[85%]">
+      <form className="flex w-full justify-center" onSubmit={addTodo}>
         <input
           type="text"
-          value={input}
-          onChange={(change) => {
-            setInput(() => change.target.value);
-          }}
-          placeholder="Type your task"
-          className="border-2  px-[1rem] py-[12px] text-[1.4rem] rounded-2xl w-full"
+          className="border-2 py-3 pl-2 w-full"
+          value={todo}
+          placeholder="What task will you like to do today?"
+          onChange={(e) => trackChanges(e.target.value)}
         />
-        <button className="border-2 text-[2.5rem] px-[30px]" onClick={addTodo}>
-          +
+        <button type="submit" className="border-2 px-3 bg-blue-600 text-white">
+          Submit
         </button>
-      </div>
-      {todoArray}
+      </form>
+      {todoArray.map((value, index) => (
+        <div
+          key={checkedStatus[index].id}
+          className="flex justify-center border-2 items-center"
+        >
+          <img
+            src={checkedStatus[index].img}
+            onClick={() => toggleCheckedStatus(checkedStatus[index].id)}
+            alt=""
+            className="w-[50px] cursor-pointer"
+          />
+          <p className="flex-auto">{value}</p>
+          <img src={close} alt="" className="w-[50px]" />
+        </div>
+      ))}
     </div>
   );
 };
