@@ -4,66 +4,70 @@ import close from "/close.svg";
 import { useState } from "react";
 
 const Input = () => {
-  const [todo, setTodo] = useState("");
-  const [todoArray, setTodoArray] = useState([]);
-  const [checkedStatus, setCheckedStatus] = useState([]);
-  const [nextId, setNextId] = useState(1);
-
-  function trackChanges(event) {
-    setTodo(event);
-  }
+  const [task, setTask] = useState("");
+  const [taskArray, setTaskArray] = useState([]);
+  const [id, setId] = useState(1);
+  const [status, setStatus] = useState([]);
 
   function addTodo(event) {
-    event.preventDefault(); // Prevent the form from submitting
-
-    if (todo.trim() === "") return; // Prevent adding empty items
-
-    setTodoArray((prevState) => [...prevState, todo]);
-    setTodo("");
-
-    const newStatus = { id: nextId, img: unchecked };
-    setCheckedStatus((prevState) => [...prevState, newStatus]);
-
-    setNextId((prevState) => prevState + 1);
+    event.preventDefault();
+    setTaskArray((prevstate) => [...prevstate, task]);
+    setTask("");
+    setStatus((prevstate) => [...prevstate, { id, img: unchecked }]);
+    setId((prevstate) => prevstate + 1);
   }
 
-  function toggleCheckedStatus(id) {
-    setCheckedStatus((prevStatus) =>
-      prevStatus.map((status) =>
-        status.id === id
-          ? { ...status, img: status.img === unchecked ? checked : unchecked }
-          : status
-      )
-    );
+  function toggleStatus(id) {
+    status.map((item) => {
+      if (item.id === id) {
+        item.img === unchecked
+          ? setStatus((prevstate) => [...prevstate, (item.img = checked)])
+          : setStatus((prevstate) => [...prevstate, (item.img = unchecked)]);
+      }
+    });
+  }
+
+  function deleteTask(clickedTask) {
+    let updateTaskArray = taskArray.filter((item) => item !== clickedTask);
+    setTaskArray(updateTaskArray);
+    console.log(updateTaskArray);
   }
 
   return (
     <div className="flex justify-center flex-col max-md:w-[85%]">
-      <form className="flex w-full justify-center" onSubmit={addTodo}>
+      <form className="flex w-full justify-center">
         <input
           type="text"
+          onChange={(e) => {
+            e.preventDefault();
+            setTask(() => e.target.value);
+          }}
+          value={task}
           className="border-2 py-3 pl-2 w-full"
-          value={todo}
           placeholder="What task will you like to do today?"
-          onChange={(e) => trackChanges(e.target.value)}
         />
-        <button type="submit" className="border-2 px-3 bg-blue-600 text-white">
+        <button
+          onClick={addTodo}
+          className="border-2 px-3 bg-blue-600 text-white"
+        >
           Submit
         </button>
       </form>
-      {todoArray.map((value, index) => (
-        <div
-          key={checkedStatus[index].id}
-          className="flex justify-center border-2 items-center"
-        >
+      {taskArray.map((value, index) => (
+        <div key={index} className="flex justify-center border-2 items-center">
           <img
-            src={checkedStatus[index].img}
-            onClick={() => toggleCheckedStatus(checkedStatus[index].id)}
-            alt=""
+            src={status[index].img}
+            onClick={() => toggleStatus(status[index].id)}
+            alt={"checked"}
             className="w-[50px] cursor-pointer"
           />
           <p className="flex-auto">{value}</p>
-          <img src={close} alt="" className="w-[50px]" />
+          <img
+            src={close}
+            onClick={() => deleteTask(value)}
+            alt=""
+            className="w-[50px]"
+          />
         </div>
       ))}
     </div>
