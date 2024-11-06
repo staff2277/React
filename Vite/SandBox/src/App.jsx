@@ -1,13 +1,10 @@
-import Header from "../components/Header";
-import Input from "../components/Input";
-
+import Accordion from "../components/Accordion";
 const App = () => {
-  
 
+  
   return (
     <div className="flex flex-col justify-center h-screen items-center w-full">
-      <Header />
-      <Input />
+      <Accordion/>
     </div>
   );
 };
