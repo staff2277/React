@@ -1,38 +1,33 @@
 import { useState } from "react";
 import data from "../src/data";
-
 const Accordion = () => {
-    
-    const statusArray = data.map((value) => ({id: value.id, status: false}));
-
-    const [accordionStatus, setAccordionStatus] = useState(statusArray);
-
-  
+  let accordionArray = data.map((item) => ({ id: item.id, status: false }));
+  const [accordion, setAccordion] = useState(accordionArray);
 
   function toggleAccordion(id) {
-    setAccordionStatus((prevstate => {
-       return prevstate.map(item => (id === item.id ? {...item, status: !item.status} : item))
-    }))
+    setAccordion((prevstate) =>
+      prevstate.map((item) => id === item.id ? { ...item, status: !item.status } : {...item, status: false}))
+    
   }
-
-
 
   return (
     <>
       {data.map((value, index) => (
-        <div key={index} className=" w-[500px]">
+        <div key={value.id} className="w-[500px] h-auto">
           <div
             onClick={() => toggleAccordion(value.id)}
-            className="bg-black text-white flex justify-between items-center pl-2"
+            className="flex justify-between items-center bg-teal-700 text-white pl-3 pr-3 py-2 border-b-[1px] border-b-white"
           >
-            {value.title}
-            <button className="text-[3rem] pr-5">+</button>
+            <p>{value.title}</p>
+            <button className="text-[2rem]">+</button>
           </div>
           <div
-            className={`bg-slate-500 pl-2 ${accordionStatus[index].status && "hidden"}`}
+            className={`border-x-[1px] border-x-teal-700 pl-2 ${
+              accordion[index].status ? "block" : "hidden"
+            }`}
           >
-            <h4 className="py-4">{value.title}</h4>
-            <p className="pb-2">{value.content}</p>
+            <p className="py-3">{value.title}</p>
+            <p className="py-3">{value.content}</p>
           </div>
         </div>
       ))}
