@@ -1,10 +1,10 @@
-import Accordion from "../components/Accordion";
+import HexColorGenerator from "../components/HexColorGenerator";
 const App = () => {
 
   
   return (
     <div className="flex flex-col justify-center h-screen items-center w-full">
-      <Accordion/>
+      <HexColorGenerator/>
     </div>
   );
 };
