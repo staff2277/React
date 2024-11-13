@@ -1,34 +1,32 @@
-const ratingData = [
+const imageData = [
     {
       "id": 1,
-      "checked": "/star.svg",
-      "unchecked": "star-empty.svg",
-      "status": false
+      "img": "/1.jpg",
     },
     {
       "id": 2,
-      "checked": "/star.svg",
-      "unchecked": "star-empty.svg",
-      "status": false
+      "img": "/2.jpg",
     },
     {
       "id": 3,
-      "checked": "/star.svg",
-      "unchecked": "star-empty.svg",
-      "status": false
+      "img": "/3.jpg",
     },
     {
       "id": 4,
-      "checked": "/star.svg",
-      "unchecked": "star-empty.svg",
-      "status": false
+      "img": "/4.jpg",
     },
     {
       "id": 5,
-      "checked": "/star.svg",
-      "unchecked": "star-empty.svg",
-      "status": false
+      "img": "/5.jpg",
+    },
+    {
+      "id": 6,
+      "img": "/6.jpg",
+    },
+    {
+      "id": 7,
+      "img": "/7.jpg",
     },
   ]
   
-  export default ratingData
+  export default imageData
