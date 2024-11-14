@@ -1,18 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import data from "../src/data";
 
 const ImageSlider = () => {
-  const [image, setImage] = useState(data[0].img);
-  let acc = 0;
+  const [count, setCount] = useState(0)
 
-  setInterval(() => {
-    acc > data.length - 2 ? (acc = 0) : (acc = acc + 1);
-    setImage(() => data[acc].img);
-  }, 5000);
+  
+  useEffect(() => {
+    let interval = setInterval(()=>{
+      setCount((prevCount => prevCount >= data.length - 1 ? 0 : prevCount + 1))
+      console.log(count);
+    },3000)
+
+    return () => clearInterval(interval)
+  },[]);
 
   return (
     <div className="border-2 border-black w-[600px] relative">
-      <img src={image} alt="" />
+      <img src={data[count].img} alt="" />
       <div className="absolute bg-white rounded-full p-2 top-[45%]">
         <img src="/left.svg" alt="" className="w-6" />
       </div>
