@@ -9,16 +9,17 @@ const ImageSlider = () => {
       setCount((prevcount) =>
         prevcount >= data.length - 1 ? 0 : prevcount + 1
       )
-    }, 5000);
+    }, 3000);
 
     return () => clearTimeout(interval);
   }, [count]);
 
   function handleLeft(){
-    setCount((prevcount => prevcount - 1))
+    setCount((prevcount => prevcount <= 0 ? (data.length - 1) : prevcount - 1))
+    
   }
   function handleRight(){
-    setCount((prevcount => prevcount - 1))
+    setCount((prevcount => prevcount >= (data.length - 1) ? 0 : prevcount + 1))
   }
 
   return (
