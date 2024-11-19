@@ -1,10 +1,10 @@
-import ImageSlider from "../components/ImageSlider";
+import Cards from "../components/Cards";
 const App = () => {
 
   
   return (
-    <div className="flex flex-col justify-center h-screen items-center w-full">
-      <ImageSlider/>
+    <div className="border-2 border-black">
+      <Cards/>
     </div>
   );
 };
